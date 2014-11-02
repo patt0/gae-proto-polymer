@@ -1,0 +1,40 @@
+application: your-project-id
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /robots\.txt
+  static_files: static/robots.txt
+  upload: static/robots\.txt
+
+# Endpoints handler
+- url: /_ah/spi/.*
+  script: services.register.api
+
+
+# Statis handlers
+- url: /components
+  static_dir: static/components
+
+- url: /images
+  static_dir: static/images
+
+- url: /api
+  static_dir: static/api
+
+- url: /post-service
+  static_dir: static/post-service
+
+- url: /
+  static_dir: static/finished
+
+
+libraries:
+- name: endpoints
+  version: 1.0
